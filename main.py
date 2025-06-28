@@ -1,9 +1,13 @@
 import json, io, base64, glob, os
 import requests
 from fasthtml.common import *
+from starlette.responses import JSONResponse
 from openai import OpenAI
 from dotenv import load_dotenv
 from PIL import Image, ImageDraw, ImageFont
+from core.nodes import get_node_registry
+
+DEV_MODE = os.getenv("FASTHTML_ENV") == "dev"
 
 # Load environment variables
 load_dotenv()
@@ -114,5 +118,57 @@ async def ws(data, send):
             "data": base64.b64encode(buf.getvalue()).decode("utf-8"),
             "encoding": "base64"
         })
+
+@app.route("/node-registry", methods=["GET", "OPTIONS"])
+async def node_registry(request):
+    """
+    - OPTIONS = CORS pre-flight
+    - GET      = real JSON
+    """
+
+    # ---------- CORS headers (dev only) ----------
+    cors = {
+        "Access-Control-Allow-Origin":  "*" if DEV_MODE else "",
+        "Access-Control-Allow-Methods": "GET, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+    }
+
+    # Browser’s pre-flight check
+    if request.method == "OPTIONS":
+        return JSONResponse({}, headers=cors)
+
+    # Actual registry payload
+    return JSONResponse(get_node_registry(), headers=cors if DEV_MODE else None)
+
+# This already exists — we enhance it
+# @app.ws("/ws")
+# async def ws(data, send):
+#     print("✅ WebSocket message received:", data)
+
+#     if data.get("type") == "get-nodes":
+#         await safe_send(send, {
+#             "type": "node-registry",
+#             "nodes": get_node_registry()
+#         })
+#         return
+
+#     if data.get("type") == "run-node":
+#         node_type = data.get("nodeType")
+#         inputs = data.get("inputs", {})
+
+#         if node_type == "image_gen":
+#             # you already implemented this
+#             pass
+
+#         # fallback
+#         await safe_send(send, {
+#             "type": "error",
+#             "message": f"Unknown nodeType: {node_type}"
+#         })
+#         return
+
+#     if data.get("type") != "run-workflow":
+#         return
+
 
 serve()
