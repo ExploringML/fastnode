@@ -1,0 +1,304 @@
+{
+  "schema_version": "1.0.0",
+  "nodes": [
+    {
+      "id": "ghost-1",
+      "type": "ghost_node",
+      "position": {
+        "x": 550,
+        "y": 90
+      },
+      "data": {
+        "type": "ghost_node",
+        "label": "This node is missing!",
+        "meta": {
+          "displayName": "Ghost Node",
+          "category": "Unknown",
+          "inputs": [
+            "a",
+            "b"
+          ],
+          "outputs": [
+            "out"
+          ],
+          "params": {
+            "label": {
+              "type": "string",
+              "ui": "text",
+              "default": "This node is missing!"
+            }
+          },
+          "actions": [
+            {
+              "label": "Delete",
+              "action": "delete"
+            }
+          ],
+          "clientOnly": false
+        }
+      }
+    },
+    {
+      "id": "num-1",
+      "type": "number",
+      "position": {
+        "x": 40,
+        "y": 40
+      },
+      "data": {
+        "type": "number",
+        "value": 3,
+        "meta": {
+          "displayName": "Number",
+          "inputs": [],
+          "outputs": [
+            "value"
+          ],
+          "params": {
+            "value": {
+              "type": "int",
+              "ui": "number",
+              "default": 0,
+              "min": -999,
+              "max": 999
+            }
+          },
+          "actions": [
+            {
+              "label": "Reset",
+              "action": "reset"
+            },
+            {
+              "label": "Delete",
+              "action": "delete"
+            }
+          ],
+          "clientOnly": false
+        }
+      }
+    },
+    {
+      "id": "num-2",
+      "type": "number",
+      "position": {
+        "x": 40,
+        "y": 180
+      },
+      "data": {
+        "type": "number",
+        "value": 5,
+        "meta": {
+          "displayName": "Number",
+          "inputs": [],
+          "outputs": [
+            "value"
+          ],
+          "params": {
+            "value": {
+              "type": "int",
+              "ui": "number",
+              "default": 0,
+              "min": -999,
+              "max": 999
+            }
+          },
+          "actions": [
+            {
+              "label": "Reset",
+              "action": "reset"
+            },
+            {
+              "label": "Delete",
+              "action": "delete"
+            }
+          ],
+          "clientOnly": false
+        }
+      }
+    },
+    {
+      "id": "sum-1",
+      "type": "sum",
+      "position": {
+        "x": 350,
+        "y": 60
+      },
+      "data": {
+        "type": "sum",
+        "meta": {
+          "displayName": "Sum",
+          "inputs": [
+            "x",
+            "y"
+          ],
+          "outputs": [
+            "result"
+          ],
+          "params": {},
+          "actions": [
+            {
+              "label": "Reset",
+              "action": "reset"
+            },
+            {
+              "label": "Delete",
+              "action": "delete"
+            }
+          ],
+          "clientOnly": false
+        }
+      }
+    },
+    {
+      "id": "sum-2",
+      "type": "sum",
+      "position": {
+        "x": 350,
+        "y": 210
+      },
+      "data": {
+        "type": "sum",
+        "meta": {
+          "displayName": "Sum",
+          "inputs": [
+            "x",
+            "y"
+          ],
+          "outputs": [
+            "result"
+          ],
+          "params": {},
+          "actions": [
+            {
+              "label": "Reset",
+              "action": "reset"
+            },
+            {
+              "label": "Delete",
+              "action": "delete"
+            }
+          ],
+          "clientOnly": false
+        }
+      }
+    },
+    {
+      "id": "res-1",
+      "type": "display_text",
+      "position": {
+        "x": 800,
+        "y": 90
+      },
+      "data": {
+        "type": "display_text",
+        "meta": {
+          "displayName": "Result",
+          "inputs": [
+            "value"
+          ],
+          "outputs": [],
+          "params": {
+            "value": {
+              "type": "string",
+              "ui": "text_readonly",
+              "default": ""
+            }
+          },
+          "actions": [
+            {
+              "label": "Reset",
+              "action": "reset"
+            },
+            {
+              "label": "Delete",
+              "action": "delete"
+            }
+          ],
+          "clientOnly": false
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "type": "data",
+      "source": "num-1",
+      "sourceHandle": "value",
+      "target": "sum-1",
+      "targetHandle": "x",
+      "data": {
+        "key": "value",
+        "label": ""
+      }
+    },
+    {
+      "id": "e2",
+      "type": "data",
+      "source": "num-2",
+      "sourceHandle": "value",
+      "target": "sum-1",
+      "targetHandle": "y",
+      "data": {
+        "key": "value",
+        "label": ""
+      }
+    },
+    {
+      "id": "e3",
+      "type": "data",
+      "source": "num-1",
+      "sourceHandle": "value",
+      "target": "sum-2",
+      "targetHandle": "x",
+      "data": {
+        "key": "value",
+        "label": ""
+      }
+    },
+    {
+      "id": "e4",
+      "type": "data",
+      "source": "num-2",
+      "sourceHandle": "value",
+      "target": "sum-2",
+      "targetHandle": "y",
+      "data": {
+        "key": "value",
+        "label": ""
+      }
+    },
+    {
+      "id": "e5",
+      "type": "data",
+      "source": "sum-1",
+      "sourceHandle": "result",
+      "target": "ghost-1",
+      "targetHandle": "a",
+      "data": {
+        "key": "value",
+        "label": ""
+      }
+    },
+    {
+      "id": "e6",
+      "type": "data",
+      "source": "sum-2",
+      "sourceHandle": "result",
+      "target": "ghost-1",
+      "targetHandle": "b",
+      "data": {
+        "key": "value",
+        "label": ""
+      }
+    },
+    {
+      "id": "e7",
+      "type": "data",
+      "source": "ghost-1",
+      "sourceHandle": "out",
+      "target": "res-1",
+      "targetHandle": "value"
+    }
+  ]
+}

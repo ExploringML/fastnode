@@ -1,0 +1,387 @@
+{
+  "schema_version": "1.0.0",
+  "nodes": [
+    {
+      "id": "num-1",
+      "type": "number",
+      "position": {
+        "x": -22.69946781853959,
+        "y": -39.497660375972515
+      },
+      "data": {
+        "type": "number",
+        "value": 3,
+        "meta": {
+          "displayName": "Number",
+          "inputs": [],
+          "outputs": [
+            "value"
+          ],
+          "params": {
+            "value": {
+              "type": "int",
+              "ui": "number",
+              "default": 0,
+              "min": -999,
+              "max": 999
+            }
+          },
+          "actions": [
+            {
+              "label": "Reset",
+              "action": "reset"
+            },
+            {
+              "label": "Delete",
+              "action": "delete"
+            }
+          ]
+        }
+      },
+      "measured": {
+        "width": 199,
+        "height": 116
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "num-2",
+      "type": "number",
+      "position": {
+        "x": -46.552495460733006,
+        "y": 254.08638862243237
+      },
+      "data": {
+        "type": "number",
+        "value": 5,
+        "meta": {
+          "displayName": "Number",
+          "inputs": [],
+          "outputs": [
+            "value"
+          ],
+          "params": {
+            "value": {
+              "type": "int",
+              "ui": "number",
+              "default": 0,
+              "min": -999,
+              "max": 999
+            }
+          },
+          "actions": [
+            {
+              "label": "Reset",
+              "action": "reset"
+            },
+            {
+              "label": "Delete",
+              "action": "delete"
+            }
+          ]
+        }
+      },
+      "measured": {
+        "width": 199,
+        "height": 116
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "sum-1",
+      "type": "sum",
+      "position": {
+        "x": 352.50252141624355,
+        "y": -83.47789453129633
+      },
+      "data": {
+        "type": "sum",
+        "meta": {
+          "displayName": "Sum",
+          "inputs": [
+            "x",
+            "y"
+          ],
+          "outputs": [
+            "result"
+          ],
+          "params": {},
+          "actions": [
+            {
+              "label": "Reset",
+              "action": "reset"
+            },
+            {
+              "label": "Delete",
+              "action": "delete"
+            }
+          ]
+        },
+        "result": 8,
+        "value": 8
+      },
+      "measured": {
+        "width": 150,
+        "height": 116
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "sum-2",
+      "type": "sum",
+      "position": {
+        "x": 389.44492557627154,
+        "y": 249.00152023580551
+      },
+      "data": {
+        "type": "sum",
+        "meta": {
+          "displayName": "Sum",
+          "inputs": [
+            "x",
+            "y"
+          ],
+          "outputs": [
+            "result"
+          ],
+          "params": {},
+          "actions": [
+            {
+              "label": "Reset",
+              "action": "reset"
+            },
+            {
+              "label": "Delete",
+              "action": "delete"
+            }
+          ]
+        },
+        "result": 7,
+        "value": 7
+      },
+      "measured": {
+        "width": 150,
+        "height": 116
+      },
+      "selected": true,
+      "dragging": false
+    },
+    {
+      "id": "res-1",
+      "type": "display_text",
+      "position": {
+        "x": 849.2162545194561,
+        "y": 89.16582619458549
+      },
+      "data": {
+        "type": "display_text",
+        "meta": {
+          "displayName": "Result",
+          "inputs": [
+            "value"
+          ],
+          "outputs": [],
+          "params": {
+            "value": {
+              "type": "string",
+              "ui": "text_readonly",
+              "default": ""
+            }
+          },
+          "actions": [
+            {
+              "label": "Reset",
+              "action": "reset"
+            },
+            {
+              "label": "Delete",
+              "action": "delete"
+            }
+          ]
+        },
+        "text": "8",
+        "value": "8"
+      },
+      "measured": {
+        "width": 155,
+        "height": 116
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "m-pmy4",
+      "type": "display_text",
+      "position": {
+        "x": 846.6895322320419,
+        "y": 229.4167013330819
+      },
+      "data": {
+        "type": "display_text",
+        "value": "7",
+        "meta": {
+          "version": "1.0.0",
+          "type": "text",
+          "displayName": "Result",
+          "category": "Core",
+          "clientOnly": false,
+          "inputs": [
+            "value"
+          ],
+          "params": {
+            "text": {
+              "type": "string",
+              "ui": "text_readonly",
+              "default": ""
+            }
+          },
+          "actions": [
+            {
+              "label": "Reset",
+              "action": "reset"
+            },
+            {
+              "label": "Delete",
+              "action": "delete"
+            }
+          ]
+        },
+        "text": "7"
+      },
+      "measured": {
+        "width": 162,
+        "height": 116
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "WvefSf",
+      "type": "number",
+      "position": {
+        "x": -39.12550908844179,
+        "y": 385.6800677704981
+      },
+      "data": {
+        "type": "number",
+        "value": 2,
+        "meta": {
+          "version": "1.0.0",
+          "type": "number",
+          "displayName": "Number 1",
+          "category": "Core",
+          "clientOnly": false,
+          "outputs": [
+            "value"
+          ],
+          "params": {
+            "value": {
+              "type": "int",
+              "ui": "number",
+              "default": 0,
+              "min": -999,
+              "max": 999
+            }
+          },
+          "actions": [
+            {
+              "label": "Reset",
+              "action": "reset"
+            },
+            {
+              "label": "Delete",
+              "action": "delete"
+            },
+            {
+              "label": "Log ID",
+              "action": "logId"
+            }
+          ]
+        }
+      },
+      "measured": {
+        "width": 199,
+        "height": 116
+      },
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "type": "data",
+      "source": "num-1",
+      "sourceHandle": "value",
+      "target": "sum-1",
+      "targetHandle": "x",
+      "data": {
+        "key": "value",
+        "label": "3"
+      }
+    },
+    {
+      "id": "e2",
+      "type": "data",
+      "source": "num-2",
+      "sourceHandle": "value",
+      "target": "sum-1",
+      "targetHandle": "y",
+      "data": {
+        "key": "value",
+        "label": "5"
+      }
+    },
+    {
+      "source": "sum-1",
+      "sourceHandle": "result",
+      "target": "res-1",
+      "targetHandle": "value",
+      "type": "data",
+      "data": {
+        "key": "value",
+        "label": "8"
+      },
+      "id": "xy-edge__sum-1result-res-1value"
+    },
+    {
+      "source": "sum-2",
+      "sourceHandle": "result",
+      "target": "m-pmy4",
+      "targetHandle": "value",
+      "type": "data",
+      "data": {
+        "key": "value",
+        "label": "7"
+      },
+      "id": "xy-edge__sum-2result-m-pmy4value"
+    },
+    {
+      "source": "num-2",
+      "sourceHandle": "value",
+      "target": "sum-2",
+      "targetHandle": "x",
+      "type": "data",
+      "data": {
+        "key": "value",
+        "label": "5"
+      },
+      "id": "xy-edge__num-2value-sum-2x"
+    },
+    {
+      "source": "WvefSf",
+      "sourceHandle": "value",
+      "target": "sum-2",
+      "targetHandle": "y",
+      "type": "data",
+      "data": {
+        "key": "value",
+        "label": "2"
+      },
+      "id": "xy-edge__WvefSfvalue-sum-2y"
+    }
+  ]
+}

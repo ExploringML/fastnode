@@ -1,13 +1,22 @@
 import json, io, base64, glob, os
 import requests
+from pathlib import Path
 from fasthtml.common import *
-from starlette.responses import JSONResponse
+from starlette.responses import JSONResponse, FileResponse
 from openai import OpenAI
 from dotenv import load_dotenv
 from PIL import Image, ImageDraw, ImageFont
 from core.nodes import get_node_registry
+from core.ws_handlers import (
+    handle_run_workflow,
+    handle_run_node,
+    handle_evaluate_node,
+)
+from utils.ws import safe_send
 
 DEV_MODE = os.getenv("FASTHTML_ENV") == "dev"
+WORKFLOWS_DIR = Path(__file__).parent/"workflows"
+WORKFLOWS_DIR.mkdir(exist_ok=True)
 
 # Load environment variables
 load_dotenv()
@@ -32,16 +41,22 @@ app, rt = fast_app(pico=False, static_path="static", hdrs=hdrs, exts='ws')
 def index():
     return Div("Production", Div(id="root", style="width:100vw; height:100vh;"))
 
-# ✅ JSON-safe WebSocket sender
-async def safe_send(send, msg: dict):
-    try:
-        if not isinstance(msg, dict):
-            raise TypeError(f"safe_send expected dict, got {type(msg)}")
-        await send(json.dumps(msg))
-    except Exception as e:
-        print("❌ Failed to send WebSocket message:", e)
-
 @app.ws("/ws")
+async def ws(data, send):
+    match data.get("type"):
+        case "run-workflow":
+            await handle_run_workflow(data, send)
+        case "run-node":
+            await handle_run_node(data, send)
+        case "evaluate-node":
+            await handle_evaluate_node(data, send)
+        case _:
+            await safe_send(send, {
+                "type": "error",
+                "message": f"Unsupported message type: {data.get('type')}"
+            })
+
+@app.ws("/ws-legacy")
 async def ws(data, send):
     print("✅ WebSocket message received:", data)
 
@@ -139,6 +154,68 @@ async def node_registry(request):
 
     # Actual registry payload
     return JSONResponse(get_node_registry(), headers=cors if DEV_MODE else None)
+
+@app.route("/workflows/{fname}.json", methods=["GET", "OPTIONS"])
+async def get_workflow(request, fname: str):
+    cors = {
+        "Access-Control-Allow-Origin":  "*" if DEV_MODE else "",
+        "Access-Control-Allow-Methods": "GET, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+    }
+
+    if request.method == "OPTIONS":
+        return JSONResponse({}, headers=cors)
+
+    file_path = WORKFLOWS_DIR / f"{fname}.json"
+    if not file_path.exists():
+        return JSONResponse({"error": "not found"}, status_code=404, headers=cors)
+
+    return FileResponse(file_path, media_type="application/json", headers=cors)
+
+@app.route("/save-workflow", methods=["POST", "OPTIONS"])
+async def save_workflow(request):
+    cors = {
+        "Access-Control-Allow-Origin":  "*" if DEV_MODE else "",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+    }
+
+    if request.method == "OPTIONS":
+        return JSONResponse({}, headers=cors)
+
+    try:
+        payload = await request.json()
+        fname   = payload.get("filename", "").strip()
+        if not fname:
+            return JSONResponse({"error": "filename missing"}, status_code=400, headers=cors)
+
+        if fname.lower() == "default.json":
+            return JSONResponse(
+                {"error": "Refusing to overwrite default.json"},
+                status_code=400,
+                headers=cors,
+            )
+
+        if not fname.endswith(".json"):
+            fname += ".json"
+
+        fpath = WORKFLOWS_DIR / fname
+        with fpath.open("w", encoding="utf-8") as f:
+            json.dump(
+                {
+                    "schema_version": "1.0.0",
+                    "nodes": payload.get("nodes", []),
+                    "edges": payload.get("edges", []),
+                },
+                f,
+                indent=2,
+            )
+
+        return JSONResponse({"status": "ok", "saved": fname}, headers=cors)
+
+    except Exception as e:
+        print("💥 save-workflow error:", e)
+        return JSONResponse({"error": "failed"}, status_code=500, headers=cors)
 
 # This already exists — we enhance it
 # @app.ws("/ws")
