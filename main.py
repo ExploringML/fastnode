@@ -7,6 +7,7 @@ from openai import OpenAI
 from dotenv import load_dotenv
 from PIL import Image, ImageDraw, ImageFont
 from core.nodes import get_node_registry
+from core.ws_handlers import MESSAGE_HANDLERS
 from core.ws_handlers import (
     handle_run_workflow,
     handle_run_node,
@@ -41,20 +42,18 @@ app, rt = fast_app(pico=False, static_path="static", hdrs=hdrs, exts='ws')
 def index():
     return Div("Production", Div(id="root", style="width:100vw; height:100vh;"))
 
+from core.ws_handlers import MESSAGE_HANDLERS
+
 @app.ws("/ws")
 async def ws(data, send):
-    match data.get("type"):
-        case "run-workflow":
-            await handle_run_workflow(data, send)
-        case "run-node":
-            await handle_run_node(data, send)
-        case "evaluate-node":
-            await handle_evaluate_node(data, send)
-        case _:
-            await safe_send(send, {
-                "type": "error",
-                "message": f"Unsupported message type: {data.get('type')}"
-            })
+    handler = MESSAGE_HANDLERS.get(data.get("type"))
+    if handler:
+        await handler(data, send)
+    else:
+        await safe_send(send, {
+            "type": "error",
+            "message": f"Unsupported message type: {data.get('type')}"
+        })
 
 @app.ws("/ws-legacy")
 async def ws(data, send):
