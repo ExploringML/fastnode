@@ -3,7 +3,7 @@ from core.nodes import register_node  # your global registry
 register_node("display_text", {
     "version": "1.0.0",
     "type": "text",
-    "displayName": "Result",
+    "displayName": "Result (text)",
     "category": "Core",
     "clientOnly": True,
 	"inputs": ["value"],

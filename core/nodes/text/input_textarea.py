@@ -3,10 +3,10 @@ from core.nodes import register_node
 register_node("textarea_input", {
     "version": "1.0.0",
     "type": "text",
-    "displayName": "Text Input",
+    "displayName": "Prompt",
     "category": "Core",
     "clientOnly": True,
-    "outputs": ["text"],
+    "outputs": ["prompt"],
 	"showOutputOnEdge": False,
     "params": {
         "text": {

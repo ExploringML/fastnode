@@ -4,7 +4,7 @@ from core.nodes import register_node
 def sum_handler(inputs, params=None):
     x = inputs.get("x", 0)
     y = inputs.get("y", 0)
-    return x + y  # ✅ return raw value
+    return x + y  # return raw value
 
 # 2. Register the node including the handler reference
 register_node("sum", {

@@ -9,32 +9,42 @@ WebSocket message routing for FastNode
 from core.nodes import NODE_REGISTRY
 from core.executor import evaluate_workflow
 from utils.ws import safe_send
+import inspect
 
 # ────────────────────────────────────────────────────────────────
 # 1. Helper – call handler safely and emit node-result frame
 # ────────────────────────────────────────────────────────────────
 async def _dispatch_node(handler, *, req_id, node_id, inputs, params, send):
+    print(f"🟡 Dispatching {handler.__name__}, async={inspect.iscoroutinefunction(handler)}")
+
     try:
-        result = handler(inputs, params)
-        await safe_send(
-            send,
-            {
-                "type": "node-result",
-                "requestId": req_id,
-                "nodeId": node_id,
-                "result": result,
-            },
-        )
+        sig = inspect.signature(handler)
+        kwargs = {}
+
+        if 'send' in sig.parameters:
+            kwargs['send'] = send
+        if 'request_id' in sig.parameters:
+            kwargs['request_id'] = req_id
+
+        if inspect.iscoroutinefunction(handler):
+            result = await handler(inputs, params, **kwargs)
+        else:
+            result = handler(inputs, params, **kwargs)
+
+        await safe_send(send, {
+            "type": "node-result",
+            "requestId": req_id,
+            "nodeId": node_id,
+            "result": result,
+        })
+
     except Exception as exc:
-        await safe_send(
-            send,
-            {
-                "type": "node-result",
-                "requestId": req_id,
-                "nodeId": node_id,
-                "error": str(exc),
-            },
-        )
+        await safe_send(send, {
+            "type": "node-result",
+            "requestId": req_id,
+            "nodeId": node_id,
+            "error": str(exc),
+        })
 
 # ────────────────────────────────────────────────────────────────
 # 2. Single-node evaluator  (traversal.js)
