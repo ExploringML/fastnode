@@ -25,7 +25,12 @@ async def send_progress(send, request_id, progress, message):
 async def generate_llm_response_handler(inputs, params=None, send=None, request_id=None):
     system_prompt = (inputs.get("system_prompt") or "").strip()
     user_prompt   = (inputs.get("user_prompt") or "").strip()
-    model         = inputs.get("model") or "gpt-4o"
+    model         = inputs.get("model") or "gpt-4o-mini"
+
+    print(f"inputs: {inputs}")
+    print(f"system_prompt: {system_prompt}")
+    print(f"user_prompt: {user_prompt}")
+    print(f"model: {model}")
 
     if not user_prompt:
         raise ValueError("User prompt is empty")
@@ -45,9 +50,10 @@ async def generate_llm_response_handler(inputs, params=None, send=None, request_
     )
 
     await send_progress(send, request_id, 80, "Processing response...")
-
+    
     content = rsp.choices[0].message.content.strip()
-    return { "value": content }
+
+    return {"response": content}
 
 # ── Node registration ───────────────────────────
 register_node(
@@ -60,7 +66,7 @@ register_node(
         "category"   : "AI",
         "clientOnly" : False,
         "inputs"     : ["system_prompt", "user_prompt", "model"],
-        "outputs"    : ["value"],
+        "outputs"    : ["response"],
         # "params"     : {
         #     "response": {
         #         "type": "string",

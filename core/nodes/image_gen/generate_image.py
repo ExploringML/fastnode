@@ -26,8 +26,13 @@ async def send_progress(send, request_id, progress, message):
 
 # ── backend handler ───────────────────────────────────────────────
 async def generate_image_handler(inputs, params=None, send=None, request_id=None):
+    print(f"inputs: {inputs}")
+
     prompt = (inputs.get("prompt") or "").strip()
     model  = inputs.get("model") or "gpt-image-1"
+
+    print(f"prompt: {prompt}")
+    print(f"model: {model}")
 
     if not prompt:
         raise ValueError("Prompt is empty")
@@ -75,7 +80,7 @@ register_node(
         "type"       : "image",
         "displayName": "Image Gen",
         "category"   : "AI",
-        "clientOnly" : False,               # ← runs on server
+        "clientOnly" : False,
         "inputs"     : ["prompt", "model"],
         "outputs"    : [],
         "params"     : {

@@ -1,0 +1,201 @@
+{
+  "schema_version": "1.0.0",
+  "nodes": [
+    {
+      "id": "xFTSnI",
+      "type": "textarea_input",
+      "position": {
+        "x": 4.312929076745519,
+        "y": -140.49094134561167
+      },
+      "data": {
+        "type": "textarea_input",
+        "text": "You are a specialist in crafting high-quality prompts for OpenAI\\u2019s gpt-image-1 image generation model. Your job is to take an initial user prompt and rewrite it to maximize visual clarity, specificity, and artistic impact, tailored to how gpt-image-1 interprets input. Focus on concrete visual details, scene composition, lighting, style (e.g., photo, painting, 3D), and emotional tone. Eliminate ambiguity, and ensure the prompt guides the model toward a coherent and compelling image. Use natural language; no tags or prompt syntax. Just return prompt text only, no title.",
+        "value": ""
+      },
+      "measured": {
+        "width": 275,
+        "height": 250
+      },
+      "selected": false
+    },
+    {
+      "id": "MCK8Og",
+      "type": "textarea_input",
+      "position": {
+        "x": 2.5886773975089454,
+        "y": 145.73483740765738
+      },
+      "data": {
+        "type": "textarea_input",
+        "text": "A photo of a dog playing with a ball.",
+        "value": ""
+      },
+      "measured": {
+        "width": 275,
+        "height": 250
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "s9rVkt",
+      "type": "generate_llm_response",
+      "position": {
+        "x": 359.508774999477,
+        "y": 24.175094021479826
+      },
+      "data": {
+        "type": "generate_llm_response",
+        "value": null
+      },
+      "measured": {
+        "width": 214,
+        "height": 250
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "nBrT9I",
+      "type": "display_text",
+      "position": {
+        "x": 722.5817379694994,
+        "y": -183.06085619269174
+      },
+      "data": {
+        "type": "display_text",
+        "value": ""
+      },
+      "measured": {
+        "width": 308,
+        "height": 375
+      },
+      "selected": false,
+      "dragging": false,
+      "width": 308,
+      "height": 375,
+      "resizing": false
+    },
+    {
+      "id": "YVZmDO",
+      "type": "image_model_selector",
+      "position": {
+        "x": 384.84285027825007,
+        "y": 344.2383270924557
+      },
+      "data": {
+        "type": "image_model_selector",
+        "model": "gpt-image-1",
+        "value": "gpt-image-1"
+      },
+      "measured": {
+        "width": 213,
+        "height": 250
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "yjC_Iq",
+      "type": "generate_image",
+      "position": {
+        "x": 751.1442109557404,
+        "y": 337.41283589970743
+      },
+      "data": {
+        "type": "generate_image",
+        "image": "",
+        "value": null
+      },
+      "measured": {
+        "width": 190,
+        "height": 250
+      },
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "xFTSnI",
+      "sourceHandle": "prompt",
+      "target": "s9rVkt",
+      "targetHandle": "system_prompt",
+      "type": "data",
+      "data": {
+        "0": "v",
+        "1": "a",
+        "2": "l",
+        "3": "u",
+        "4": "e",
+        "label": ""
+      },
+      "id": "xy-edge__xFTSnIprompt-s9rVktsystem_prompt"
+    },
+    {
+      "source": "MCK8Og",
+      "sourceHandle": "prompt",
+      "target": "s9rVkt",
+      "targetHandle": "user_prompt",
+      "type": "data",
+      "data": {
+        "0": "v",
+        "1": "a",
+        "2": "l",
+        "3": "u",
+        "4": "e",
+        "label": ""
+      },
+      "id": "xy-edge__MCK8Ogprompt-s9rVktuser_prompt"
+    },
+    {
+      "source": "s9rVkt",
+      "sourceHandle": "response",
+      "target": "nBrT9I",
+      "targetHandle": "value",
+      "type": "data",
+      "data": {
+        "0": "v",
+        "1": "a",
+        "2": "l",
+        "3": "u",
+        "4": "e",
+        "label": ""
+      },
+      "id": "xy-edge__s9rVktvalue-nBrT9Ivalue"
+    },
+    {
+      "source": "YVZmDO",
+      "sourceHandle": "model",
+      "target": "yjC_Iq",
+      "targetHandle": "model",
+      "type": "data",
+      "data": {
+        "0": "v",
+        "1": "a",
+        "2": "l",
+        "3": "u",
+        "4": "e",
+        "label": ""
+      },
+      "id": "xy-edge__YVZmDOmodel-yjC_Iqmodel"
+    },
+    {
+      "source": "s9rVkt",
+      "sourceHandle": "response",
+      "target": "yjC_Iq",
+      "targetHandle": "prompt",
+      "type": "data",
+      "data": {
+        "0": "v",
+        "1": "a",
+        "2": "l",
+        "3": "u",
+        "4": "e",
+        "label": ""
+      },
+      "id": "xy-edge__s9rVktvalue-yjC_Iqprompt"
+    }
+  ]
+}

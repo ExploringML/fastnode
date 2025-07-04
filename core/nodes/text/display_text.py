@@ -8,7 +8,7 @@ register_node("display_text", {
     "clientOnly": True,
 	"inputs": ["value"],
 	    "params": {
-        "text": {
+        "value": {
             "type": "string",
             "ui": "text_readonly",
             "default": ""
