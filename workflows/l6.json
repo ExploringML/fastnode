@@ -1,0 +1,167 @@
+{
+  "schema_version": "1.0.0",
+  "nodes": [
+    {
+      "id": "aStxwZ",
+      "type": "load_sd_model",
+      "position": {
+        "x": -15.136893109574004,
+        "y": -596.0244146620239
+      },
+      "data": {
+        "type": "load_sd_model",
+        "model": "runwayml/stable-diffusion-v1-5"
+      },
+      "measured": {
+        "width": 252,
+        "height": 250
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "2c_CCw",
+      "type": "sd_sampler",
+      "position": {
+        "x": 369.9056177584766,
+        "y": -509.83289026269034
+      },
+      "data": {
+        "type": "sd_sampler",
+        "steps": 20,
+        "guidance": 7.5,
+        "seed": -1
+      },
+      "measured": {
+        "width": 196,
+        "height": 250
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "yvF6Wv",
+      "type": "textarea_input",
+      "position": {
+        "x": -19.970062702060034,
+        "y": -331.0056153407087
+      },
+      "data": {
+        "type": "textarea_input",
+        "text": "cat"
+      },
+      "measured": {
+        "width": 275,
+        "height": 250
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "p4Gti-",
+      "type": "textarea_input",
+      "position": {
+        "x": -12.72030831333106,
+        "y": -64.37575948856477
+      },
+      "data": {
+        "type": "textarea_input",
+        "text": "ugly"
+      },
+      "measured": {
+        "width": 275,
+        "height": 250
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "DX3KaZ",
+      "type": "display_image",
+      "position": {
+        "x": 706.6164327016673,
+        "y": -506.6107772010331
+      },
+      "data": {
+        "type": "display_image",
+        "value": 0,
+        "meta": {
+          "version": "1.0.0",
+          "displayName": "Display Image",
+          "category": "Core",
+          "clientOnly": true,
+          "inputs": [
+            "image"
+          ],
+          "outputs": [
+            "image"
+          ],
+          "params": {
+            "image": {
+              "type": "string",
+              "ui": "image",
+              "default": ""
+            }
+          },
+          "actions": [
+            {
+              "label": "Delete",
+              "action": "delete"
+            }
+          ]
+        },
+        "image": ""
+      },
+      "measured": {
+        "width": 220,
+        "height": 250
+      },
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "aStxwZ",
+      "sourceHandle": "model",
+      "target": "2c_CCw",
+      "targetHandle": "model_name",
+      "type": "data",
+      "data": {
+        "key": "value",
+        "label": ""
+      },
+      "id": "xy-edge__aStxwZmodel-2c_CCwmodel_name"
+    },
+    {
+      "source": "yvF6Wv",
+      "sourceHandle": "prompt",
+      "target": "2c_CCw",
+      "targetHandle": "prompt",
+      "type": "data",
+      "data": "value",
+      "id": "xy-edge__yvF6Wvprompt-2c_CCwprompt"
+    },
+    {
+      "source": "p4Gti-",
+      "sourceHandle": "prompt",
+      "target": "2c_CCw",
+      "targetHandle": "negative_prompt",
+      "type": "data",
+      "data": "value",
+      "id": "xy-edge__p4Gti-prompt-2c_CCwnegative_prompt"
+    },
+    {
+      "source": "2c_CCw",
+      "sourceHandle": "image",
+      "target": "DX3KaZ",
+      "targetHandle": "image",
+      "type": "data",
+      "data": {
+        "key": "value",
+        "label": ""
+      },
+      "id": "xy-edge__2c_CCwimage-DX3KaZimage"
+    }
+  ]
+}

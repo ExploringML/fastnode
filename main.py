@@ -14,6 +14,10 @@ from core.ws_handlers import (
     handle_evaluate_node,
 )
 from utils.ws import safe_send
+import torch
+from diffusers import DiffusionPipeline
+from contextlib import asynccontextmanager
+from core.model_cache import ModelCacheManager
 
 DEV_MODE = os.getenv("FASTHTML_ENV") == "dev"
 WORKFLOWS_DIR = Path(__file__).parent/"workflows"
@@ -26,6 +30,27 @@ if not openai_api_key:
     raise RuntimeError("OPENAI_API_KEY not found – add it to .env")
 client = OpenAI(api_key=openai_api_key)
 
+# Define the application lifespan manager
+@asynccontextmanager
+async def lifespan(app):
+    """
+    This function runs on application startup and shutdown.
+    It's the modern way to manage long-lived resources.
+    """
+    # --- Startup ---
+    print("Initializing Model Cache Manager...")
+    # Initialize the manager and store it in the app's shared state.
+    # You can configure the cache size here.
+    app.state.model_manager = ModelCacheManager(cache_size=2)
+    
+    yield # The application runs here
+    
+    # --- Shutdown ---
+    print("Shutting down and clearing resources...")
+    app.state.model_manager = None
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+
 # Load built asset files
 assets_dir = "static/reactflow/assets"
 js = os.path.basename(glob.glob(f"{assets_dir}/index-*.js")[0])
@@ -36,19 +61,18 @@ hdrs = (
     Link(rel="stylesheet", href=f"reactflow/assets/{css}", type="text/css"),
     Script(type="module", src=f"reactflow/assets/{js}"),
 )
-app, rt = fast_app(pico=False, static_path="static", hdrs=hdrs, exts='ws')
+app, rt = fast_app(pico=False, static_path="static", hdrs=hdrs, exts='ws', lifespan=lifespan)
+#app, rt = fast_app(pico=False, static_path="static", hdrs=hdrs, exts='ws')
 
 @rt
 def index():
     return Div("Production", Div(id="root", style="width:100vw; height:100vh;"))
 
-from core.ws_handlers import MESSAGE_HANDLERS
-
 @app.ws("/ws")
 async def ws(data, send):
     handler = MESSAGE_HANDLERS.get(data.get("type"))
     if handler:
-        await handler(data, send)
+        await handler(app, data, send)
     else:
         await safe_send(send, {
             "type": "error",
@@ -245,6 +269,5 @@ async def save_workflow(request):
 
 #     if data.get("type") != "run-workflow":
 #         return
-
 
 serve()
