@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.0.0",
+  "nodes": [
+    {
+      "id": "xFTSnI",
+      "type": "textarea_input",
+      "position": {
+        "x": -54.13124476470047,
+        "y": -189.19441954681668
+      },
+      "data": {
+        "type": "textarea_input",
+        "text": "You are a specialist in crafting high-quality prompts for OpenAI\\u2019s gpt-image-1 image generation model. Your job is to take an initial user prompt and rewrite it to maximize visual clarity, specificity, and artistic impact, tailored to how gpt-image-1 interprets input. Focus on concrete visual details, scene composition, lighting, style (e.g., photo, painting, 3D), and emotional tone. Eliminate ambiguity, and ensure the prompt guides the model toward a coherent and compelling image. Use natural language; no tags or prompt syntax. Just return prompt text only, no title. Make the prompt between 500-100 words."
+      },
+      "measured": {
+        "width": 279,
+        "height": 261
+      },
+      "selected": false,
+      "width": 279,
+      "height": 261,
+      "resizing": false,
+      "dragging": false
+    },
+    {
+      "id": "MCK8Og",
+      "type": "textarea_input",
+      "position": {
+        "x": -49.938120280692196,
+        "y": 87.79642023400682
+      },
+      "data": {
+        "type": "textarea_input",
+        "text": "A photo of a cat playing with string."
+      },
+      "measured": {
+        "width": 275,
+        "height": 250
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "s9rVkt",
+      "type": "generate_llm_response",
+      "position": {
+        "x": 11.012429849869378,
+        "y": 357.9333810362574
+      },
+      "data": {
+        "type": "generate_llm_response"
+      },
+      "measured": {
+        "width": 214,
+        "height": 250
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "nBrT9I",
+      "type": "display_text",
+      "position": {
+        "x": 303.14982378613723,
+        "y": -100.10099289112159
+      },
+      "data": {
+        "type": "display_text",
+        "value": "A playful tabby cat with vibrant orange and black stripes is energetically pouncing on a long, colorful string in a sunlit living room. The cat's bright green eyes are wide with excitement as it swats at the string with its paw, while sunlight streams in through a nearby window, casting soft shadows across the warm wooden floor. A few scattered toys can be seen in the background, enhancing the playful atmosphere of the scene. The photo captures the cat in mid-leap, showcasing its grace and curiosity."
+      },
+      "measured": {
+        "width": 643,
+        "height": 453
+      },
+      "selected": true,
+      "dragging": false,
+      "width": 643,
+      "height": 453,
+      "resizing": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "xFTSnI",
+      "sourceHandle": "prompt",
+      "target": "s9rVkt",
+      "targetHandle": "system_prompt",
+      "type": "data",
+      "data": {
+        "0": "v",
+        "1": "a",
+        "2": "l",
+        "3": "u",
+        "4": "e",
+        "label": ""
+      },
+      "id": "xy-edge__xFTSnIprompt-s9rVktsystem_prompt"
+    },
+    {
+      "source": "MCK8Og",
+      "sourceHandle": "prompt",
+      "target": "s9rVkt",
+      "targetHandle": "user_prompt",
+      "type": "data",
+      "data": {
+        "0": "v",
+        "1": "a",
+        "2": "l",
+        "3": "u",
+        "4": "e",
+        "label": ""
+      },
+      "id": "xy-edge__MCK8Ogprompt-s9rVktuser_prompt"
+    },
+    {
+      "source": "s9rVkt",
+      "sourceHandle": "response",
+      "target": "nBrT9I",
+      "targetHandle": "value",
+      "type": "data",
+      "data": {
+        "0": "v",
+        "1": "a",
+        "2": "l",
+        "3": "u",
+        "4": "e",
+        "label": ""
+      },
+      "id": "xy-edge__s9rVktvalue-nBrT9Ivalue"
+    }
+  ]
+}

@@ -21,8 +21,51 @@ async def send_progress(send, request_id, progress, message):
             "message": message
         })
 
-# ── Handler ─────────────────────────────────────
+# ── Handlers ─────────────────────────────────────
+
+# 1. Streaming handler
 async def generate_llm_response_handler(inputs, params=None, send=None, request_id=None):
+    system_prompt = (inputs.get("system_prompt") or "").strip()
+    user_prompt   = (inputs.get("user_prompt") or "").strip()
+    model         = inputs.get("model") or "gpt-4o-mini"
+    node_id       = inputs.get("id")  # Ensure this is passed from the caller
+
+    if not user_prompt:
+        raise ValueError("User prompt is empty")
+
+    await send_progress(send, request_id, 10, "Preparing LLM request...")
+
+    messages = []
+    if system_prompt:
+        messages.append({ "role": "system", "content": system_prompt })
+    messages.append({ "role": "user", "content": user_prompt })
+
+    await send_progress(send, request_id, 30, f"Calling {model}...")
+
+    stream = await client.chat.completions.create(
+        model=model,
+        messages=messages,
+        stream=True,
+    )
+
+    collected = ""
+    async for chunk in stream:
+        token = chunk.choices[0].delta.content
+        if token:
+            collected += token
+            if send and request_id and node_id:
+                await safe_send(send, {
+                    "type": "node-stream",
+                    "requestId": request_id,
+                    "nodeId": node_id,
+                    "data": token,
+                })
+
+    await send_progress(send, request_id, 90, "Completed.")
+    return { "response": collected.strip() }
+
+# 2. Non-streaming handler
+async def _generate_llm_response_handler(inputs, params=None, send=None, request_id=None):
     system_prompt = (inputs.get("system_prompt") or "").strip()
     user_prompt   = (inputs.get("user_prompt") or "").strip()
     model         = inputs.get("model") or "gpt-4o-mini"
