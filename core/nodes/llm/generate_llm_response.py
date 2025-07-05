@@ -106,6 +106,7 @@ register_node(
         "type"       : "text",
         "displayName": "LLM Response",
         "showOutputOnEdge"  : False,
+        "isStreaming": True,
         "category"   : "AI",
         "clientOnly" : False,
         "inputs"     : ["system_prompt", "user_prompt", "model"],
