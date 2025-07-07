@@ -10,13 +10,15 @@
       },
       "data": {
         "type": "load_sd_model",
-        "model": "runwayml/stable-diffusion-v1-5"
+        "model": "sd-legacy/stable-diffusion-v1-5",
+        "evaluating": false,
+        "value": "runwayml/stable-diffusion-v1-5"
       },
       "measured": {
-        "width": 252,
+        "width": 307,
         "height": 250
       },
-      "selected": false,
+      "selected": true,
       "dragging": false
     },
     {
@@ -28,13 +30,15 @@
       },
       "data": {
         "type": "sd_sampler",
+        "scheduler": "Default",
         "steps": 20,
         "guidance": 7.5,
-        "seed": -1
+        "seed": -1,
+        "evaluating": true
       },
       "measured": {
         "width": 196,
-        "height": 250
+        "height": 262
       },
       "selected": false,
       "dragging": false
@@ -48,7 +52,9 @@
       },
       "data": {
         "type": "textarea_input",
-        "text": "cat"
+        "text": "cat",
+        "evaluating": false,
+        "value": "cat"
       },
       "measured": {
         "width": 275,
@@ -66,7 +72,9 @@
       },
       "data": {
         "type": "textarea_input",
-        "text": "ugly"
+        "text": "ugly",
+        "evaluating": false,
+        "value": "ugly"
       },
       "measured": {
         "width": 275,
@@ -84,32 +92,6 @@
       },
       "data": {
         "type": "display_image",
-        "value": 0,
-        "meta": {
-          "version": "1.0.0",
-          "displayName": "Display Image",
-          "category": "Core",
-          "clientOnly": true,
-          "inputs": [
-            "image"
-          ],
-          "outputs": [
-            "image"
-          ],
-          "params": {
-            "image": {
-              "type": "string",
-              "ui": "image",
-              "default": ""
-            }
-          },
-          "actions": [
-            {
-              "label": "Delete",
-              "action": "delete"
-            }
-          ]
-        },
         "image": ""
       },
       "measured": {
@@ -125,13 +107,13 @@
       "source": "aStxwZ",
       "sourceHandle": "model",
       "target": "2c_CCw",
-      "targetHandle": "model_name",
+      "targetHandle": "model",
       "type": "data",
       "data": {
         "key": "value",
         "label": ""
       },
-      "id": "xy-edge__aStxwZmodel-2c_CCwmodel_name"
+      "id": "xy-edge__aStxwZmodel-2c_CCwmodel"
     },
     {
       "source": "yvF6Wv",

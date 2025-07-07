@@ -1,3 +1,6 @@
+# To install PyTorch CUDA:
+# uv venv (only needed if the env hasn't been created yet)
+# uv pip sync pyproject.toml
 [project]
 name = "node-editor-rf"
 version = "0.1.0"
@@ -16,3 +19,8 @@ dependencies = [
     "accelerate",
 	"xformers"
 ]
+
+# Check the PyTorch index to find CUDA-enabled packages.
+# This is required for GPU support.
+[tool.uv.pip]
+extra-index-url = ["https://download.pytorch.org/whl/cu121"]
