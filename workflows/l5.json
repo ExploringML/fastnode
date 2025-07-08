@@ -5,13 +5,12 @@
       "id": "xFTSnI",
       "type": "textarea_input",
       "position": {
-        "x": -54.13124476470047,
-        "y": -189.19441954681668
+        "x": -51.71465996845751,
+        "y": -181.94466515808767
       },
       "data": {
         "type": "textarea_input",
-        "text": "You are a specialist in crafting high-quality prompts for OpenAI\\u2019s gpt-image-1 image generation model. Your job is to take an initial user prompt and rewrite it to maximize visual clarity, specificity, and artistic impact, tailored to how gpt-image-1 interprets input. Focus on concrete visual details, scene composition, lighting, style (e.g., photo, painting, 3D), and emotional tone. Eliminate ambiguity, and ensure the prompt guides the model toward a coherent and compelling image. Use natural language; no tags or prompt syntax. Just return prompt text only, no title.",
-        "value": "You are a specialist in crafting high-quality prompts for OpenAI\\u2019s gpt-image-1 image generation model. Your job is to take an initial user prompt and rewrite it to maximize visual clarity, specificity, and artistic impact, tailored to how gpt-image-1 interprets input. Focus on concrete visual details, scene composition, lighting, style (e.g., photo, painting, 3D), and emotional tone. Eliminate ambiguity, and ensure the prompt guides the model toward a coherent and compelling image. Use natural language; no tags or prompt syntax. Just return prompt text only, no title. Make the prompt between 500-100 words."
+        "prompt": "prompt booster"
       },
       "measured": {
         "width": 279,
@@ -32,30 +31,10 @@
       },
       "data": {
         "type": "textarea_input",
-        "text": "A photo of a cute labrador playing with a ball.",
-        "value": "A photo of a cat playing with string."
+        "prompt": "dog with ball"
       },
       "measured": {
         "width": 275,
-        "height": 250
-      },
-      "selected": false,
-      "dragging": false
-    },
-    {
-      "id": "s9rVkt",
-      "type": "generate_llm_response",
-      "position": {
-        "x": 314.01985906188264,
-        "y": -185.22528125238284
-      },
-      "data": {
-        "type": "generate_llm_response",
-        "response": "Capture a vibrant and engaging scene of a fluffy, playful cat, possibly a Maine Coon or a playful tabby, caught in the midst of a lively moment as it enthusiastically plays with a bright, colorful string. The cat's fur is illuminated by soft, natural sunlight streaming in from a nearby window, highlighting the intricate patterns and textures of its fur. The scene is set in a cozy living room filled with various textures, like a plush rug underfoot, a soft sofa in the background, and potted plants that add a touch of greenery to the interior.\n\nPosition the cat in the foreground with its paws outstretched, playfully clawing at the string, which is a vivid red and white twisted cord that contrasts beautifully with the muted earth tones of the room. You can see the excitement in the cat's eyes, wide and sparkling with curiosity and joy, while its tail flicks energetically, capturing the essence of pure feline playfulness. \n\nIn the background, a soft focus on a cushion or a shelf adorned with books and small decorative items adds depth to the composition without detracting from the main subject. A scattering of sunlight creates gentle shadows, enhancing the three-dimensional feel of the scene. Capture this moment with a slight tilt, as though the viewer is drawn into the adventure alongside the cat, cementing the whimsical and warm atmosphere of the image.",
-        "value": "Capture a vibrant and engaging scene of a fluffy, playful cat, possibly a Maine Coon or a playful tabby, caught in the midst of a lively moment as it enthusiastically plays with a bright, colorful string. The cat's fur is illuminated by soft, natural sunlight streaming in from a nearby window, highlighting the intricate patterns and textures of its fur. The scene is set in a cozy living room filled with various textures, like a plush rug underfoot, a soft sofa in the background, and potted plants that add a touch of greenery to the interior.\n\nPosition the cat in the foreground with its paws outstretched, playfully clawing at the string, which is a vivid red and white twisted cord that contrasts beautifully with the muted earth tones of the room. You can see the excitement in the cat's eyes, wide and sparkling with curiosity and joy, while its tail flicks energetically, capturing the essence of pure feline playfulness. \n\nIn the background, a soft focus on a cushion or a shelf adorned with books and small decorative items adds depth to the composition without detracting from the main subject. A scattering of sunlight creates gentle shadows, enhancing the three-dimensional feel of the scene. Capture this moment with a slight tilt, as though the viewer is drawn into the adventure alongside the cat, cementing the whimsical and warm atmosphere of the image."
-      },
-      "measured": {
-        "width": 214,
         "height": 250
       },
       "selected": false,
@@ -70,7 +49,7 @@
       },
       "data": {
         "type": "display_text",
-        "value": "Capture a vibrant and engaging scene of a fluffy, playful cat, possibly a Maine Coon or a playful tabby, caught in the midst of a lively moment as it enthusiastically plays with a bright, colorful string. The cat's fur is illuminated by soft, natural sunlight streaming in from a nearby window, highlighting the intricate patterns and textures of its fur. The scene is set in a cozy living room filled with various textures, like a plush rug underfoot, a soft sofa in the background, and potted plants that add a touch of greenery to the interior.\n\nPosition the cat in the foreground with its paws outstretched, playfully clawing at the string, which is a vivid red and white twisted cord that contrasts beautifully with the muted earth tones of the room. You can see the excitement in the cat's eyes, wide and sparkling with curiosity and joy, while its tail flicks energetically, capturing the essence of pure feline playfulness. \n\nIn the background, a soft focus on a cushion or a shelf adorned with books and small decorative items adds depth to the composition without detracting from the main subject. A scattering of sunlight creates gentle shadows, enhancing the three-dimensional feel of the scene. Capture this moment with a slight tilt, as though the viewer is drawn into the adventure alongside the cat, cementing the whimsical and warm atmosphere of the image."
+        "value": ""
       },
       "measured": {
         "width": 478,
@@ -112,8 +91,7 @@
       },
       "data": {
         "type": "image_model_selector",
-        "model": "gpt-image-1",
-        "value": "gpt-image-1"
+        "model": "gpt-image-1"
       },
       "measured": {
         "width": 217,
@@ -121,73 +99,26 @@
       },
       "selected": false,
       "dragging": false
+    },
+    {
+      "id": "Hy7KzG",
+      "type": "generate_llm_response",
+      "position": {
+        "x": 332.04578928400304,
+        "y": -217.828894049995
+      },
+      "data": {
+        "type": "generate_llm_response"
+      },
+      "measured": {
+        "width": 220,
+        "height": 250
+      },
+      "selected": false,
+      "dragging": false
     }
   ],
   "edges": [
-    {
-      "source": "xFTSnI",
-      "sourceHandle": "prompt",
-      "target": "s9rVkt",
-      "targetHandle": "system_prompt",
-      "type": "data",
-      "data": {
-        "0": "v",
-        "1": "a",
-        "2": "l",
-        "3": "u",
-        "4": "e",
-        "label": ""
-      },
-      "id": "xy-edge__xFTSnIprompt-s9rVktsystem_prompt"
-    },
-    {
-      "source": "MCK8Og",
-      "sourceHandle": "prompt",
-      "target": "s9rVkt",
-      "targetHandle": "user_prompt",
-      "type": "data",
-      "data": {
-        "0": "v",
-        "1": "a",
-        "2": "l",
-        "3": "u",
-        "4": "e",
-        "label": ""
-      },
-      "id": "xy-edge__MCK8Ogprompt-s9rVktuser_prompt"
-    },
-    {
-      "source": "s9rVkt",
-      "sourceHandle": "response",
-      "target": "nBrT9I",
-      "targetHandle": "value",
-      "type": "data",
-      "data": {
-        "0": "v",
-        "1": "a",
-        "2": "l",
-        "3": "u",
-        "4": "e",
-        "label": ""
-      },
-      "id": "xy-edge__s9rVktvalue-nBrT9Ivalue"
-    },
-    {
-      "source": "s9rVkt",
-      "sourceHandle": "response",
-      "target": "9xTVtP",
-      "targetHandle": "prompt",
-      "type": "data",
-      "data": {
-        "0": "v",
-        "1": "a",
-        "2": "l",
-        "3": "u",
-        "4": "e",
-        "label": ""
-      },
-      "id": "xy-edge__s9rVktresponse-9xTVtPprompt"
-    },
     {
       "source": "HVHiB8",
       "sourceHandle": "model",
@@ -203,6 +134,63 @@
         "label": ""
       },
       "id": "xy-edge__HVHiB8model-9xTVtPmodel"
+    },
+    {
+      "source": "xFTSnI",
+      "sourceHandle": "prompt",
+      "target": "Hy7KzG",
+      "targetHandle": "system_prompt",
+      "type": "data",
+      "data": {
+        "0": "v",
+        "1": "a",
+        "2": "l",
+        "3": "u",
+        "4": "e",
+        "label": ""
+      },
+      "id": "xy-edge__xFTSnIprompt-Hy7KzGsystem_prompt"
+    },
+    {
+      "source": "MCK8Og",
+      "sourceHandle": "prompt",
+      "target": "Hy7KzG",
+      "targetHandle": "user_prompt",
+      "type": "data",
+      "data": {
+        "0": "v",
+        "1": "a",
+        "2": "l",
+        "3": "u",
+        "4": "e",
+        "label": ""
+      },
+      "id": "xy-edge__MCK8Ogprompt-Hy7KzGuser_prompt"
+    },
+    {
+      "source": "Hy7KzG",
+      "sourceHandle": "response",
+      "target": "9xTVtP",
+      "targetHandle": "prompt",
+      "type": "data",
+      "data": {
+        "0": "v",
+        "1": "a",
+        "2": "l",
+        "3": "u",
+        "4": "e",
+        "label": ""
+      },
+      "id": "xy-edge__Hy7KzGresponse-9xTVtPprompt"
+    },
+    {
+      "source": "Hy7KzG",
+      "sourceHandle": "response",
+      "target": "nBrT9I",
+      "targetHandle": "value",
+      "type": "data",
+      "data": "value",
+      "id": "xy-edge__Hy7KzGresponse-nBrT9Ivalue"
     }
   ]
 }

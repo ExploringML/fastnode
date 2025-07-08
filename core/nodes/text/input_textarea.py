@@ -9,7 +9,7 @@ register_node("textarea_input", {
     "outputs": ["prompt"],
 	"showOutputOnEdge": False,
     "params": {
-        "text": {
+        "prompt": {
             "type": "string",
             "ui": "text_textarea",
             "default": "",

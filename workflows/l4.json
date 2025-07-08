@@ -2,36 +2,31 @@
   "schema_version": "1.0.0",
   "nodes": [
     {
-      "id": "xFTSnI",
+      "id": "AuPXQa",
       "type": "textarea_input",
       "position": {
-        "x": -54.13124476470047,
-        "y": -189.19441954681668
+        "x": -3.0539691283590678,
+        "y": -175.94142424844975
       },
       "data": {
         "type": "textarea_input",
-        "text": "You are a specialist in crafting high-quality prompts for OpenAI\\u2019s gpt-image-1 image generation model. Your job is to take an initial user prompt and rewrite it to maximize visual clarity, specificity, and artistic impact, tailored to how gpt-image-1 interprets input. Focus on concrete visual details, scene composition, lighting, style (e.g., photo, painting, 3D), and emotional tone. Eliminate ambiguity, and ensure the prompt guides the model toward a coherent and compelling image. Use natural language; no tags or prompt syntax. Just return prompt text only, no title. Make the prompt between 500-100 words."
+        "prompt": "Boost the prompt for an image generator."
       },
       "measured": {
-        "width": 279,
-        "height": 261
-      },
-      "selected": false,
-      "width": 279,
-      "height": 261,
-      "resizing": false,
-      "dragging": false
+        "width": 275,
+        "height": 250
+      }
     },
     {
-      "id": "MCK8Og",
+      "id": "szSQyN",
       "type": "textarea_input",
       "position": {
-        "x": -49.938120280692196,
-        "y": 87.79642023400682
+        "x": -5.470553924602072,
+        "y": 117.27086436236706
       },
       "data": {
         "type": "textarea_input",
-        "text": "A photo of a cat playing with string."
+        "prompt": "dog with ball"
       },
       "measured": {
         "width": 275,
@@ -41,81 +36,51 @@
       "dragging": false
     },
     {
-      "id": "s9rVkt",
+      "id": "SXJYYL",
       "type": "generate_llm_response",
       "position": {
-        "x": 309.0368592271865,
-        "y": -24.514391862314316
+        "x": 365.07244816599064,
+        "y": -66.38958015210059
       },
       "data": {
-        "type": "generate_llm_response"
+        "type": "generate_llm_response",
+        "response": "Create a lively scene featuring a playful dog joyfully fetching a bright, colorful ball in a sunlit park. The dog, a fluffy golden retriever, is mid-action with its ears flopping, showcasing an expression of pure excitement. Surrounding the dog are lush green grass, vibrant flowers, and a clear blue sky. Include a few fluffy clouds and maybe a squirrel watching from a nearby tree for added charm. The overall atmosphere should be cheerful and energetic, capturing the essence of a perfect day outdoors.",
+        "value": "Create a lively scene featuring a playful dog joyfully fetching a bright, colorful ball in a sunlit park. The dog, a fluffy golden retriever, is mid-action with its ears flopping, showcasing an expression of pure excitement. Surrounding the dog are lush green grass, vibrant flowers, and a clear blue sky. Include a few fluffy clouds and maybe a squirrel watching from a nearby tree for added charm. The overall atmosphere should be cheerful and energetic, capturing the essence of a perfect day outdoors."
       },
       "measured": {
-        "width": 214,
+        "width": 217,
         "height": 250
       },
       "selected": false,
       "dragging": false
     },
     {
-      "id": "nBrT9I",
+      "id": "-Ywmfa",
       "type": "display_text",
       "position": {
-        "x": 610.266495848915,
-        "y": -88.12651747655872
+        "x": 683.2561130046518,
+        "y": -80.88908892955857
       },
       "data": {
         "type": "display_text",
-        "value": "A playful tabby cat with vibrant orange and black stripes is energetically pouncing on a long, colorful string in a sunlit living room. The cat's bright green eyes are wide with excitement as it swats at the string with its paw, while sunlight streams in through a nearby window, casting soft shadows across the warm wooden floor. A few scattered toys can be seen in the background, enhancing the playful atmosphere of the scene. The photo captures the cat in mid-leap, showcasing its grace and curiosity."
+        "value": "Create a lively scene featuring a playful dog joyfully fetching a bright, colorful ball in a sunlit park. The dog, a fluffy golden retriever, is mid-action with its ears flopping, showcasing an expression of pure excitement. Surrounding the dog are lush green grass, vibrant flowers, and a clear blue sky. Include a few fluffy clouds and maybe a squirrel watching from a nearby tree for added charm. The overall atmosphere should be cheerful and energetic, capturing the essence of a perfect day outdoors."
       },
       "measured": {
-        "width": 547,
-        "height": 352
+        "width": 442,
+        "height": 272
       },
       "selected": false,
       "dragging": false,
-      "width": 547,
-      "height": 352,
+      "width": 442,
+      "height": 272,
       "resizing": false
     }
   ],
   "edges": [
     {
-      "source": "xFTSnI",
-      "sourceHandle": "prompt",
-      "target": "s9rVkt",
-      "targetHandle": "system_prompt",
-      "type": "data",
-      "data": {
-        "0": "v",
-        "1": "a",
-        "2": "l",
-        "3": "u",
-        "4": "e",
-        "label": ""
-      },
-      "id": "xy-edge__xFTSnIprompt-s9rVktsystem_prompt"
-    },
-    {
-      "source": "MCK8Og",
-      "sourceHandle": "prompt",
-      "target": "s9rVkt",
-      "targetHandle": "user_prompt",
-      "type": "data",
-      "data": {
-        "0": "v",
-        "1": "a",
-        "2": "l",
-        "3": "u",
-        "4": "e",
-        "label": ""
-      },
-      "id": "xy-edge__MCK8Ogprompt-s9rVktuser_prompt"
-    },
-    {
-      "source": "s9rVkt",
+      "source": "SXJYYL",
       "sourceHandle": "response",
-      "target": "nBrT9I",
+      "target": "-Ywmfa",
       "targetHandle": "value",
       "type": "data",
       "data": {
@@ -126,7 +91,39 @@
         "4": "e",
         "label": ""
       },
-      "id": "xy-edge__s9rVktvalue-nBrT9Ivalue"
+      "id": "xy-edge__SXJYYLresponse--Ywmfavalue"
+    },
+    {
+      "source": "AuPXQa",
+      "sourceHandle": "prompt",
+      "target": "SXJYYL",
+      "targetHandle": "system_prompt",
+      "type": "data",
+      "data": {
+        "0": "v",
+        "1": "a",
+        "2": "l",
+        "3": "u",
+        "4": "e",
+        "label": ""
+      },
+      "id": "xy-edge__AuPXQaprompt-SXJYYLsystem_prompt"
+    },
+    {
+      "source": "szSQyN",
+      "sourceHandle": "prompt",
+      "target": "SXJYYL",
+      "targetHandle": "user_prompt",
+      "type": "data",
+      "data": {
+        "0": "v",
+        "1": "a",
+        "2": "l",
+        "3": "u",
+        "4": "e",
+        "label": ""
+      },
+      "id": "xy-edge__szSQyNprompt-SXJYYLuser_prompt"
     }
   ]
 }

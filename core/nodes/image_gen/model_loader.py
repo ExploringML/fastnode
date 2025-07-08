@@ -21,6 +21,7 @@ register_node(
     {
         "displayName": "Load SD Model",
         "category": "AI",
+        "showOutputOnEdge": False,
         "clientOnly": True,
         "outputs": ["model"],
         "params": {
@@ -30,5 +31,6 @@ register_node(
                 "default": DEFAULT_MODEL
             }
         },
+        "actions": [{"label": "Delete", "action": "delete"}]
     }
 )

@@ -10,8 +10,7 @@
       },
       "data": {
         "type": "textarea_input",
-        "text": "You are a specialist in crafting high-quality prompts for OpenAI\\u2019s gpt-image-1 image generation model. Your job is to take an initial user prompt and rewrite it to maximize visual clarity, specificity, and artistic impact, tailored to how gpt-image-1 interprets input. Focus on concrete visual details, scene composition, lighting, style (e.g., photo, painting, 3D), and emotional tone. Eliminate ambiguity, and ensure the prompt guides the model toward a coherent and compelling image. Use natural language; no tags or prompt syntax. Just return prompt text only, no title.",
-        "value": "You are a specialist in crafting high-quality prompts for OpenAI\\u2019s gpt-image-1 image generation model. Your job is to take an initial user prompt and rewrite it to maximize visual clarity, specificity, and artistic impact, tailored to how gpt-image-1 interprets input. Focus on concrete visual details, scene composition, lighting, style (e.g., photo, painting, 3D), and emotional tone. Eliminate ambiguity, and ensure the prompt guides the model toward a coherent and compelling image. Use natural language; no tags or prompt syntax. Just return prompt text only, no title."
+        "prompt": "You are a specialist in crafting high-quality prompts for OpenAI\\\\u2019s gpt-image-1 image generation model. Your job is to take an initial user prompt and rewrite it to maximize visual clarity, specificity, and artistic impact, tailored to how gpt-image-1 interprets input. Focus on concrete visual details, scene composition, lighting, style (e.g., photo, painting, 3D), and emotional tone. Eliminate ambiguity, and ensure the prompt guides the model toward a coherent and compelling image. Use natural language; no tags or prompt syntax. Just return prompt text only, no title."
       },
       "measured": {
         "width": 275,
@@ -28,8 +27,7 @@
       },
       "data": {
         "type": "textarea_input",
-        "text": "A photo of a dog playing with a ball.",
-        "value": "A photo of a dog playing with a ball."
+        "prompt": "A photo of a dog playing with a ball."
       },
       "measured": {
         "width": 275,
@@ -46,9 +44,7 @@
         "y": 24.175094021479826
       },
       "data": {
-        "type": "generate_llm_response",
-        "response": "A joyful golden retriever, fur glistening in the afternoon sun, leaps through a grassy park, its mouth wide open in excitement as it catches a bright red ball mid-air. The background features vibrant green trees and a clear blue sky, with a few fluffy white clouds dotting the scene. The dog's playful expression captures pure happiness, emphasizing the carefree spirit of a sunny day outdoors.",
-        "value": "A joyful golden retriever, fur glistening in the afternoon sun, leaps through a grassy park, its mouth wide open in excitement as it catches a bright red ball mid-air. The background features vibrant green trees and a clear blue sky, with a few fluffy white clouds dotting the scene. The dog's playful expression captures pure happiness, emphasizing the carefree spirit of a sunny day outdoors."
+        "type": "generate_llm_response"
       },
       "measured": {
         "width": 214,
@@ -87,8 +83,7 @@
       },
       "data": {
         "type": "image_model_selector",
-        "model": "gpt-image-1",
-        "value": "gpt-image-1"
+        "model": "gpt-image-1"
       },
       "measured": {
         "width": 213,

@@ -25,6 +25,9 @@ async def send_progress(send, request_id, progress, message):
 
 # 1. Streaming handler
 async def generate_llm_response_handler(inputs, params=None, send=None, request_id=None):
+    print(f"sd_sampler_handler inputs: {inputs}")
+    print(f"sd_sampler_handler params: {params}")
+    
     system_prompt = (inputs.get("system_prompt") or "").strip()
     user_prompt   = (inputs.get("user_prompt") or "").strip()
     model         = inputs.get("model") or "gpt-4o-mini"
@@ -99,26 +102,23 @@ async def _generate_llm_response_handler(inputs, params=None, send=None, request
     return {"response": content}
 
 # ── Node registration ───────────────────────────
-register_node(
-    "generate_llm_response",
-    {
-        "version"    : "1.0.0",
-        "type"       : "text",
-        "displayName": "LLM Response",
-        "showOutputOnEdge"  : False,
-        "isStreaming": True,
-        "category"   : "AI",
-        "clientOnly" : False,
-        "inputs"     : ["system_prompt", "user_prompt", "model"],
-        "outputs"    : ["response"],
-        # "params"     : {
-        #     "response": {
-        #         "type": "string",
-        #         "ui": "text_readonly",
-        #         "default": ""
-        #     }
-        # },
-        "handler"    : generate_llm_response_handler,
-        "actions"    : [{ "label": "Delete", "action": "delete" }],
-    },
-)
+register_node("generate_llm_response", {
+	"version"    : "1.0.0",
+	"type"       : "text",
+	"displayName": "LLM Response",
+	"showOutputOnEdge"  : False,
+	"isStreaming": True,
+	"category"   : "AI",
+	"clientOnly" : False,
+	"inputs"     : ["system_prompt", "user_prompt", "model"],
+	"outputs"    : ["response"],
+	# "params"     : {
+	#     "response": {
+	#         "type": "string",
+	#         "ui": "text_readonly",
+	#         "default": ""
+	#     }
+	# },
+	"handler"    : generate_llm_response_handler,
+	"actions"    : [{ "label": "Delete", "action": "delete" }],
+})

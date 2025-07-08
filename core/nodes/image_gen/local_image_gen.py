@@ -7,8 +7,17 @@ from utils.ws import safe_send
 from anyio import from_thread, to_thread
 from functools import partial
 from diffusers import EulerAncestralDiscreteScheduler
+from diffusers.pipelines.stable_diffusion import safety_checker
 
 async def sd_sampler_handler(app: FastHTML, inputs, params, send=None, request_id=None):
+    
+    def sc(self, clip_input, images) :
+        return images, [False for i in images]
+    # edit StableDiffusionSafetyChecker class so that, when called, it just returns the images and an array of True values
+    safety_checker.StableDiffusionSafetyChecker.forward = sc
+
+    print(f"sd_sampler_handler inputs: {inputs}")
+    print(f"sd_sampler_handler params: {params}")
     # Get model name from the upstream loader node
     model_name = inputs.get("model")
     if not model_name:
@@ -81,6 +90,8 @@ async def sd_sampler_handler(app: FastHTML, inputs, params, send=None, request_i
 register_node("sd_sampler", {
     "displayName": "SD Sampler",
     "category": "AI",
+    "clientOnly": False,
+    "showOutputOnEdge": False,
     "params": {
         "scheduler": {
             "type": "string",
@@ -88,15 +99,12 @@ register_node("sd_sampler", {
             "options": [["euler-a", "Euler A"]],
             "default": "euler-a"
         },
-        "steps": {"ui": "number", "default": 20, "min": 1, "max": 100},
+        "steps": {"ui": "number", "default": 20, "min": 1, "max": 250},
         "guidance": {"ui": "number", "default": 7.5, "min": 1, "max": 20, "step": 0.1},
         "seed": {"ui": "number", "default": -1}
     },
     "inputs": ["model", "prompt", "negative_prompt"],
     "outputs": ["image"],
     "handler": sd_sampler_handler,
-    "actions": [
-        {"label": "Reset", "action": "reset"},
-        {"label": "Delete", "action": "delete"},
-    ]
+    "actions": [{"label": "Delete", "action": "delete"}]
 })
